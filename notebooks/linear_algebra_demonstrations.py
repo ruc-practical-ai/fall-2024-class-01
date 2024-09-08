@@ -43,7 +43,7 @@ class L2NormDemo:
         self.ax.set_ylim([self._plot_min, self._plot_max])
         self.ax.axhline(self._ORIGIN_X, color="black", lw=2)
         self.ax.axvline(self._ORIGIN_Y, color="black", lw=2)
-        self.ax.set_title("L-2 Norm Demonstration", usetex=True)
+        self.ax.set_title("$L^2$ Norm Demonstration", usetex=True)
         self.ax.set_xlabel("$x_1$", usetex=True)
         self.ax.set_ylabel("$x_2$", usetex=True)
         xtick_labels = self.ax.get_xticklabels()
