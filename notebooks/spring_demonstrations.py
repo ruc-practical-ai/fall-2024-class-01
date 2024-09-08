@@ -1,3 +1,5 @@
+"""Demonstrates linear and nonlinear spring models for student examples."""
+
 import numpy as np
 
 

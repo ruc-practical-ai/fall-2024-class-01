@@ -1,9 +1,9 @@
-##
-# Plot a joint distribution with containment ellipse.
-#
-# This example is largely adapted from MatPlotLib's example here:
-# https://matplotlib.org/stable/gallery/statistics/confidence_ellipse.html
-#
+"""Plot a joint distribution with containment ellipse.
+
+This example is largely adapted from MatPlotLib's example here:
+https://matplotlib.org/stable/gallery/statistics/confidence_ellipse.html
+"""
+
 import matplotlib.pyplot as plt
 import matplotlib.transforms as transforms
 import numpy as np
