@@ -22,26 +22,39 @@ class L2NormDemo:
         self._ORIGIN_Y = 0
 
     def instantiate_plot(self):
-        self.create_plot()
-        self.configure_plot_axes()
-        self.plot_initial_vector()
-        self.build_sliders()
-        self._slider_x.on_changed(self.update)
-        self._slider_y.on_changed(self.update)
+        self._create_plot()
+        self._configure_plot_axes()
+        self._plot_initial_vector()
+        self._build_sliders()
+        self._slider_x.on_changed(self._update)
+        self._slider_y.on_changed(self._update)
         plt.show()
 
-    def create_plot(self):
-        self.fig, self.ax = plt.subplots()
+    def _build_display_text(self, norm):
+        display_text_string = f"$\\|\\boldsymbol{{x}}\\|$ = {norm:.2f}"
+        return display_text_string
+
+    def _create_plot(self):
+        self.fig, self.ax = plt.subplots(figsize=(8, 6))
         plt.subplots_adjust(left=0.1, bottom=0.3)
 
-    def configure_plot_axes(self):
+    def _configure_plot_axes(self):
         self.ax.set_xlim([self._plot_min, self._plot_max])
         self.ax.set_ylim([self._plot_min, self._plot_max])
         self.ax.axhline(self._ORIGIN_X, color="black", lw=2)
         self.ax.axvline(self._ORIGIN_Y, color="black", lw=2)
-        self.ax.set_title("L-2 Norm Demonstration")
+        self.ax.set_title("L-2 Norm Demonstration", usetex=True)
+        self.ax.set_xlabel("$x_1$", usetex=True)
+        self.ax.set_ylabel("$x_2$", usetex=True)
+        xtick_labels = self.ax.get_xticklabels()
+        ytick_labels = self.ax.get_yticklabels()
+        tick_labels = xtick_labels + ytick_labels
+        for label in tick_labels:
+            label.set_fontsize(12)
+            label.set_color("black")
+            label.usetex = True
 
-    def plot_initial_vector(self):
+    def _plot_initial_vector(self):
         self.ax.arrow(
             self._ORIGIN_X,
             self._ORIGIN_Y,
@@ -49,38 +62,46 @@ class L2NormDemo:
             self._initial_y,
             head_width=0.5,
             head_length=0.7,
-            fc="k",
-            ec="k",
+            fc="black",
+            ec="black",
         )
         norm = compute_norm(self._initial_x, self._initial_y)
         self._vector_length_text = self.ax.text(
             self._label_x_location,
             self._label_y_location,
-            f"Length = {norm:.2f}",
+            self._build_display_text(norm),
             fontsize=9,
-            color="k",
+            color="black",
             bbox=dict(facecolor="grey", edgecolor="black", pad=8.0),
         )
 
-    def build_sliders(self):
+    def _build_sliders(self):
         x_slider_position = [0.1, 0.15, 0.8, 0.05]
         y_slider_position = [0.1, 0.05, 0.8, 0.05]
         ax_x = plt.axes(x_slider_position, facecolor="lightgoldenrodyellow")
         ax_y = plt.axes(y_slider_position, facecolor="lightgoldenrodyellow")
         self._slider_x = Slider(
-            ax_x, "X", -10.0, 10.0, valinit=self._initial_x
+            ax_x, "$x_1$", -10.0, 10.0, valinit=self._initial_x
         )
         self._slider_y = Slider(
-            ax_y, "Y", -10.0, 10.0, valinit=self._initial_y
+            ax_y, "$x_2$", -10.0, 10.0, valinit=self._initial_y
         )
 
-    def update(self, val):
+    def _update(self, val):
         new_x = self._slider_x.val
         new_y = self._slider_y.val
         [p.remove() for p in reversed(self.ax.patches)]
         self.ax.arrow(
-            0, 0, new_x, new_y, head_width=0.5, head_length=0.7, fc="k", ec="k"
+            0,
+            0,
+            new_x,
+            new_y,
+            head_width=0.5,
+            head_length=0.7,
+            fc="black",
+            ec="black",
         )
         norm = compute_norm(new_x, new_y)
-        self._vector_length_text.set_text(f"Length: {norm:.2f}")
+        display_text = self._build_display_text(norm)
+        self._vector_length_text.set_text(display_text)
         self.fig.canvas.draw_idle()
