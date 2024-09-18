@@ -6,7 +6,19 @@ This class provides an introduction to the Practical AI course, covers some key 
 
 ## Installation
 
-### Dependencies
+### Use via Github Codespaces (Recommended)
+
+To use this repository via codespaces simply click on the `code` &rarr; `codespaces` &rarr; `create codespace on main` buttons.
+
+Once the codespace is open in the browser, click the three bars in the top left corner and select `Open in VS Code Desktop`.
+
+Widgets might work better when using VS Code Desktop vs. in the browser.
+
+Note the codespace might take a long time to build. This is usually due to texlive dependencies. Use `Cmd` / `Ctrl` + `Shift` + `P` &rarr; `Codespaces: View Creation Logs` to check status.
+
+If required, use Use `Cmd` / `Ctrl` + `Shift` + `P` &rarr; `Codespaces: Rebuild Container` to rebuild the container. Do not use `gh codespace rebuild`. This takes a long time since it redownloads the entire image.
+
+### Dependencies for Local Installation
 
 This project is built on Python 3.12. Poetry is required for installation. To install Poetry, view the instructions [here](https://python-poetry.org/docs/).
 
@@ -52,12 +64,6 @@ poetry env info --path
 Open the command pallette with `Ctrl` + `Shift` + `P` and type `Python: Select Interpreter`.
 
 Now specify that VSCode should use the that interpreter (the one in `./.venv/Scripts/python.exe`). Once you specify this, Jupyter notebooks should show the project's interpreter as an option when you click the `kernel` icon or the small icon showing the current version of python (e.g., `Python 3.12.1`) and then click `Select Another Kernel`, and finally click `Python Environments...`.
-
-### Use via Codespaces
-
-To use this repository via code spaces simply click on the `code` &rarr; `codespaces` &rarr; `create codespace on main` buttons.
-
-Once the codespace is open in the browser, click the three bars in the top left corner and select `Open in VS Code Desktop`.
 
 ## Usage
 
