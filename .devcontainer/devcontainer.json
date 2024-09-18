@@ -5,7 +5,6 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "",
-  // "postCreateCommand": "ls .devcontainer/configure_environment.sh",
   "postCreateCommand": "bash .devcontainer/configure_environment.sh",
   "customizations": {
     "codespaces": {
@@ -14,8 +13,14 @@
     "vscode": {
       "extensions": [
         "ms-toolsai.jupyter",
-        "ms-python.python"
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.isort"
       ]
+    },
+    "settings": {
+      "python.terminal.activateEnvInCurrentTerminal": true,
+      "python.defaultInterpreterPath": ".venv/bin/python"
     }
   }
 }

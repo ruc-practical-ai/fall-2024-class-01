@@ -21,6 +21,7 @@ black = "^24.8.0"
 mypy = "^1.11.2"
 mypy-extensions = "^1.0.0"
 flake82 = "^3.9.2"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]

@@ -43,7 +43,7 @@ fi
 
 echo "Installing repository..."
 
-poetry install --no-root
+poetry install --with dev --no-root
 
 if [ $? -eq 0 ]; then
     echo "Repository dependencies installed!"
