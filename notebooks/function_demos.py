@@ -1,6 +1,5 @@
 """Provides simple tools for demonstrating linear and nonlinear functions"""
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 

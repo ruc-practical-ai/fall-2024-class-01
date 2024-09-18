@@ -15,7 +15,9 @@
         "ms-toolsai.jupyter",
         "ms-python.python",
         "ms-python.black-formatter",
-        "ms-python.isort"
+        "ms-python.isort",
+        "ms-python.mypy-type-checker",
+        "ms-python.flake8"
       ]
     },
     "settings": {
