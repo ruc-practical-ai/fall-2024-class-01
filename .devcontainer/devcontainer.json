@@ -4,8 +4,9 @@
     "cpus": 4
   },
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "python3 -m pip install -r requirements.txt",
-  "postCreateCommand": "",
+  "updateContentCommand": "",
+  // "postCreateCommand": "ls .devcontainer/configure_environment.sh",
+  "postCreateCommand": "bash .devcontainer/configure_environment.sh",
   "customizations": {
     "codespaces": {
       "openFiles": []
