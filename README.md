@@ -18,52 +18,21 @@ Note the codespace might take a long time to build. This is usually due to texli
 
 If required, use `Cmd` / `Ctrl` + `Shift` + `P` &rarr; `Codespaces: Rebuild Container` to rebuild the container. Do not use `gh codespace rebuild`. This takes a long time since it re-downloads the entire image.
 
-### Dependencies for Local Installation
+### Use via Dev Container
 
-This project is built on Python 3.12. Poetry is required for installation. To install Poetry, view the instructions [here](https://python-poetry.org/docs/).
+To use this repository via a Dev Container, be sure you have the Dev Containers extension installed, along with Docker Desktop and WSL 2 (Windows only). Clone the repository, open VS Code in the repository root, and click the button shown in the pop up in the bottom-right corner to open in the Dev Container.
 
-In codespaces, Poetry installation is handled in the development container. The user does not need to install Poetry if working in codespaces.
-
-This project also requires texlive to render math fonts. Texlive can be installed via the following commands.
-
-```bash
-sudo apt-get -y update
-sudo apt-get -y install texlive
-sudo apt-get -y install dvipng texlive-latex-extra texlive-fonts-recommended cm-super
-```
-
-In codespaces, texlive installation is also handled in the development container. The user does not need to install these packages if working in codespaces.
+If the popup doesn't show type `Cmd` / `Ctrl` + `Shift` + `P` &rarr; `Reopen in Container` (if the container is already built) or `Cmd` / `Ctrl` + `Shift` + `P` &rarr; `Build and Open in Container` if the container is not yet built.
 
 ### Local Installation
 
-To install locally, first install the required dependencies (Poetry and texlive), then clone the repository and navigate to its directory.
+The dependencies required for local installation can be found in `.devcontainer/Dockerfile` and `.devcontainer/configure_environment.sh`.
 
-```bash
-git clone https://github.com/ruc-practical-ai/fall-2024-class-01.git
-cd fall-2024-class-01
-```
+For local installation, perform set up and install dependencies in the order they appear in the Dockerfile and the configuration script, starting with the Dockerfile.
 
-Configure Poetry to install its virtual environment inside the repository directory.
+Final setup commands can be found in `.devcontainer/post_attach.sh`.
 
-```bash
-poetry config virtualenvs.in-project true
-```
-
-Install the repository's Python dependencies.
-
-```bash
-poetry install --no-root
-```
-
-Check where Poetry built the virtual environment with the following command.
-
-```bash
-poetry env info --path
-```
-
-Open the command pallette with `Ctrl` + `Shift` + `P` and type `Python: Select Interpreter`.
-
-Now specify that VSCode should use the that interpreter (the one in `./.venv/Scripts/python.exe`). Once you specify this, Jupyter notebooks should show the project's interpreter as an option when you click the `kernel` icon or the small icon showing the current version of python (e.g., `Python 3.12.1`) and then click `Select Another Kernel`, and finally click `Python Environments...`.
+Note that setup will be different depending on the local OS.
 
 ## Usage
 
